@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  font-family: Arial, Helvetica, sans-serif;
+  color: white
+}
+
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background-color: lightseagreen
+}
+
+.card{
+  background-color: blue;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.navbar{
+  background-color: navy;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 10px;
+}
