@@ -2,15 +2,16 @@ import React from 'react'
 
 const App = () => {
 
-  function inputChanging(){
-    console.log("User is Typing");
+  function pageScrolling(){
+    console.log("page scrolling.....");
     
   }
 
   return (
-    <div>
-      <input onChange={inputChanging} type="text" placeholder='Enter the name' />
-
+    <div onWheel={pageScrolling}>
+      <div className="page1"></div>
+      <div className="page2"></div>
+      <div className="page3"></div>
     </div>
   )
 }
