@@ -1,18 +1,24 @@
-import React, { useActionState, useState, useSyncExternalStore } from 'react'
+import React, { useState } from 'react'
 
 const App = () => {
 
-  const [num, setNum] = useState(0)
+  const [count, setCount] = useState(0)
 
-  function changeNum() {
-    setNum(30)
-    
+  function increase(){
+    setCount(count + 1)
+  }
+
+  function decrease(){
+    setCount(count - 1)
   }
 
   return (
-    <div>
-      <h1>Value of num is {num} </h1>
-      <button onClick={changeNum}>Click</button>
+    <div className='container'>
+      <h1>{count}</h1>
+      <div className='buttons'>
+      <button onClick={increase} >Increase</button>
+      <button onClick={decrease}>Decrease</button>
+    </div>
     </div>
   )
 }
