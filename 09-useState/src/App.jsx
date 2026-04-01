@@ -1,20 +1,18 @@
-import React from 'react'
+import React, { useActionState, useState, useSyncExternalStore } from 'react'
 
 const App = () => {
 
-  let a = 20;
+  const [num, setNum] = useState(0)
 
-  function changeA(){
-    console.log(a);
-    a = 30;
-    console.log(a);
+  function changeNum() {
+    setNum(30)
     
   }
 
   return (
     <div>
-      <h1>Value of A is {a}</h1>
-      <button onClick={changeA}>Click</button>
+      <h1>Value of num is {num} </h1>
+      <button onClick={changeNum}>Click</button>
     </div>
   )
 }
