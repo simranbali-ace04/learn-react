@@ -3,17 +3,19 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [num, setNum] = useState(10)
+  const [num, setNum] = useState({user: 'Sam', age: 18})
 
   const btnClicked = () => {
-    setNum(20)
-    console.log(num);
+    const newNum = {...num};
+    newNum.user= 'Sim'
+    console.log(newNum);
+    setNum(newNum)
     
   }
 
   return (
     <div>
-      <h1>{num}</h1>
+      <h1>{num.user}, {num.age}</h1>
       <button onClick={btnClicked}>Click</button>
     </div>
   )
