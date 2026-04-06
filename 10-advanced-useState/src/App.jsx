@@ -3,13 +3,10 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [num, setNum] = useState([10,20,30])
+  const [num, setNum] = useState({user: "Rishika", age: 22})
 
   const btnClicked = () => {
-    const newNum = [...num];
-    newNum.push(40);
-    setNum(newNum);
-    console.log(newNum);
+    setNum(prev=>({...prev,age:20}))
     
     
   }
