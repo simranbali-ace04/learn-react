@@ -3,11 +3,14 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [num, setNum] = useState({user: "Rishika", age: 22})
+  const [num, setNum] = useState(10)
 
   const btnClicked = () => {
-    setNum(prev=>({...prev,age:20}))
-    
+    console.log("nachioooooo");
+    setNum(prev=>(prev + 1))
+    setNum(prev=>(prev + 1))
+    setNum(prev=>(prev + 1))
+
     
   }
 
