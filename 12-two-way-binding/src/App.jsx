@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useState, useSyncExternalStore } from 'react'
 
 const App = () => {
 
+  const [title, setTitle] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted!");
-    
+    console.log("Form submitted by", title);
+    setTitle('');
   }
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Enter your name'
+        value = {title}
         onChange={(e)=>{
-          console.log(e.target.value);
-          
+          setTitle(e.target.value);
         }}
         />
         <button>Submit</button>
