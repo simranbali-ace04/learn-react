@@ -4,12 +4,17 @@ const App = () => {
 
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
+  const [task, setTask] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault(e);
     console.log(title);
     console.log(details);
-    
+
+    const copyTask = [...task];
+    copyTask.push({ title, details });
+    setTask(copyTask);
+
     setTitle('');
     setDetails('');
   }
