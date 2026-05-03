@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
 
+  const [title, setTitle] = useState('');
+  const [details, setDetails] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault(e);
-    console.log("Form Submitted!");
+    console.log(title);
+    console.log(details);
     
+    setTitle('');
+    setDetails('');
   }
+
 
   return (
     <div className="bg-rose-200 w-screen min-h-screen md:p-10 p-10 font-semibold flex flex-col lg:flex-row gap-10">
@@ -17,10 +24,18 @@ const App = () => {
             type="text"
             placeholder="Note Title"
             className="bg-rose-200 p-2 rounded-lg text-black "
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
           />
           <textarea
             placeholder="Note Details"
             className="bg-rose-200 p-5 rounded-lg text-black "
+            value={details}
+            onChange={(e) => {
+              setDetails(e.target.value);
+            }}
           ></textarea>
           <button className="bg-rose-500 text-white p-2 rounded-lg hover:bg-rose-600">
             + Add Note
