@@ -19,6 +19,13 @@ const App = () => {
     setDetails('');
   }
 
+  const deleteNote = (idx) => {
+    const copyTask = [...task];
+    copyTask.splice(idx,1);
+    setTask(copyTask);
+    
+  }
+
 
   return (
     <div className="bg-rose-200 w-screen min-h-screen md:p-10 p-10 font-semibold flex flex-col lg:flex-row gap-10">
@@ -48,28 +55,17 @@ const App = () => {
         </div>
       </form>
       <h1 className="text-2xl font-semibold sticky top-10 self-start">Your Notes</h1>
-      <div className=" flex-1 flex flex-wrap gap-4 mt-5">
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
-      <div className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl"></div>
+      <div className=" flex-1 flex flex-wrap gap-4 mt-5 content-start">
+      
+      {task.map(function (elem, index) {
+        return <div key={index} className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl p-5 flex flex-col items-start relative justify-between">
+          <h3 className="font-bold text-xl leading-tight underline">{elem.title}</h3>
+          <p className="mt-2 leading-tight text-gray-900">{elem.details}</p>
+          <button onClick={deleteNote} className="bg-rose-500 text-white p-2 rounded-lg hover:bg-rose-600 mt-2 ">
+            Delete Note
+          </button>
+        </div>
+      })}
       </div>
     </div>
   );
