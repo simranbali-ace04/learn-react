@@ -14,6 +14,9 @@ The focus is on building applications using **components, props, and structured 
 - 🔹 **Job Portal Cards**  
   https://learn-react-flame-sigma.vercel.app/
 
+  - 🔹 **Notes App**  
+  https://notes-app-mini-project.vercel.app/
+
 ---
 
 ## ⚙️ Tech Stack
