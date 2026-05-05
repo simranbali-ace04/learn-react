@@ -1,29 +1,14 @@
-import React from 'react'
+import React from "react";
 
 const App = () => {
-
-  function pageScrolling(elem){
-    if(elem > 0){
-      console.log("Seedha scrolling");
-    }
-    else{
-      console.log("Ulta scrolling");
-      
-    }
-    
+  function btnClicked() {
+    console.log("Button Clicked!");
   }
-
   return (
-    <div onWheel={(elem)=>{
-  
-      pageScrolling(elem.deltaY)
-      
-    }}>
-      <div className="page1"></div>
-      <div className="page2"></div>
-      <div className="page3"></div>
+    <div>
+      <button onClick={btnClicked}>Click</button>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
