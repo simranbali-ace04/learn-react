@@ -2,18 +2,21 @@ import React, { useState } from "react";
 
 const App = () => {
 
+  const storedData = localStorage.getItem('task');
+  const initialTask = storedData ? JSON.parse(storedData) : [];
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState(initialTask);
 
   const handleSubmit = (e) => {
-    e.preventDefault(e);
+    e.preventDefault();
     console.log(title);
     console.log(details);
 
     const copyTask = [...task];
     copyTask.push({ title, details });
     setTask(copyTask);
+    localStorage.setItem('task', JSON.stringify(copyTask));
 
     setTitle('');
     setDetails('');
@@ -23,7 +26,7 @@ const App = () => {
     const copyTask = [...task];
     copyTask.splice(idx,1);
     setTask(copyTask);
-    
+    localStorage.setItem('task', JSON.stringify(copyTask));
   }
 
 
@@ -58,10 +61,10 @@ const App = () => {
       <div className=" flex-1 flex flex-wrap gap-4 mt-5 content-start">
       
       {task.map(function (elem, index) {
-        return <div key={index} className="bg-white h-50 w-50 rounded-xl border-2 border-rose-300 shadow-2xl p-5 flex flex-col items-start relative justify-between">
+        return <div key={index} className="bg-white min-h-48 max-w-48 rounded-xl border-2 border-rose-300 shadow-2xl p-5 flex flex-col items-start relative justify-between">
           <h3 className="font-bold text-xl leading-tight underline">{elem.title}</h3>
           <p className="mt-2 leading-tight text-gray-900">{elem.details}</p>
-          <button onClick={deleteNote} className="bg-rose-500 text-white p-2 rounded-lg hover:bg-rose-600 mt-2 ">
+          <button onClick={() => deleteNote(index)} className="bg-rose-500 text-white p-2 rounded-lg hover:bg-rose-600 mt-2 ">
             Delete Note
           </button>
         </div>
