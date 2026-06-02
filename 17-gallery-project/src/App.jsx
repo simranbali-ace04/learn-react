@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Card from "./components/Card";
 
 const App = () => {
   const [index, setIndex] = useState(1);
@@ -7,7 +8,7 @@ const App = () => {
   const [userData, setUserData] = useState([]);
   const getData = async () => {
     const response = await axios.get(
-      `https://picsum.photos/v2/list?page=${index}&limit=30`,
+      `https://picsum.photos/v2/list?page=${index}&limit=10`,
     );
     setUserData(response.data);
     console.log(response.data);
@@ -17,44 +18,36 @@ const App = () => {
     getData();
   }, [index]);
 
-  let printUserData = <h2 className="text-xs text-white">No User Available</h2>;
+  let printUserData = <h2 className="text-xs text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Loading...</h2>;
   if (userData.length > 0) {
     printUserData = userData.map(function (elem, idx) {
-      return (
-        <div className="h-60 w-60 rounded-xl mb-8" key={idx}>
-          <a href={elem.url}>
-            <img
-              className="h-full w-full object-fill"
-              src={elem.download_url}
-              alt={elem.author}
-            />
-            <div className="font-bold text-xl overflow-hidden text-ellipsis whitespace-nowrap">
-              {elem.author}
-            </div>
-          </a>
-        </div>
-      );
+      return <div key={idx}>
+        <Card elem={elem} />
+      </div>
     });
   }
 
   return (
     <div className="min-h-screen bg-black overflow-auto text-white p-4">
-      <h1 className="bg-amber-400 fixed p-2 rounded-2xl text-black font-bold text-2xl">{index}</h1>
-      <div className="flex flex-wrap gap-4">{printUserData}</div>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap gap-4 min-h-150">{printUserData}</div>
+      <div className="flex flex-wrap justify-center gap-6 p-4">
         <button
-          className="bg-amber-400 text-black font-semibold px-6 py-2 rounded m-2"
+         style={{opacity: index === 1 ? 0.5 : 1}}
+          className="bg-amber-400 text-black font-semibold px-6 py-2 rounded m-2 cursor-pointer active:scale-95"
           onClick={() => {
             if (index > 1) {
+              setUserData([]);
               setIndex(index - 1);
             }
           }}
         >
           Prev
         </button>
+        <h2 className="mt-3 text-xl "> Page {index}</h2>
         <button
-          className="bg-amber-400 text-black font-semibold px-6 py-2 rounded m-2"
+          className="bg-amber-400 text-black font-semibold px-6 py-2 rounded m-2 cursor-pointer active:scale-95"
           onClick={() => {
+            setUserData([]);
             setIndex(index + 1);
           }}
         >
