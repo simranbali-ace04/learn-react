@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import Men from "./pages/Men";
 import Women from "./pages/Women";
 import Courses from "./pages/Courses";
+import CourseDetails from "./pages/CourseDetails";
 
 const App = () => {
   return (
@@ -19,7 +20,12 @@ const App = () => {
         <Route path="/" element={<Home/> }/>
         <Route path="/about" element={<About/> }/>
         <Route path="/contact" element={<Contact/> }/>
+
         <Route path="/courses" element={<Courses/> }/>
+
+        {/* Dynamic Routing */}
+        <Route path="/courses/:CourseId" element={<CourseDetails/>} />
+
         {/*The suggested method for nested routes */}
         <Route path="/product" element={<Product/> }>
         <Route path="/product/men" element={<Men/>}/>
