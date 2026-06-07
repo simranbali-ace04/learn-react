@@ -7,6 +7,8 @@ import About from "./pages/About"
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Men from "./pages/Men";
+import Women from "./pages/Women";
 
 const App = () => {
   return (
@@ -19,6 +21,9 @@ const App = () => {
         <Route path="/product" element={<Product/> }/>
         {/* The '*' is used to define the non-existing routes */}
         <Route path="*" element={<NotFound/>}/>
+        {/* The below method is not so technically preferred */}
+        <Route path="/product/men" element={<Men/>}/>
+        <Route path="/product/women" element={<Women/>}/>
       </Routes>
       <Footer />
       
