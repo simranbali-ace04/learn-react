@@ -18,12 +18,20 @@ const App = () => {
         <Route path="/" element={<Home/> }/>
         <Route path="/about" element={<About/> }/>
         <Route path="/contact" element={<Contact/> }/>
-        <Route path="/product" element={<Product/> }/>
-        {/* The '*' is used to define the non-existing routes */}
-        <Route path="*" element={<NotFound/>}/>
-        {/* The below method is not so technically preferred */}
+        {/*The suggested method for nested routes */}
+        <Route path="/product" element={<Product/> }>
         <Route path="/product/men" element={<Men/>}/>
         <Route path="/product/women" element={<Women/>}/>
+        </Route>
+        <Route path="*" element={<NotFound/>}/>
+
+
+        {/* The '*' is used to define the non-existing routes */}
+        {/* The below method is not so technically preferred */}
+        {/*<Route path="/product/men" element={<Men/>}/>
+        <Route path="/product/women" element={<Women/>}/>*/}
+
+
       </Routes>
       <Footer />
       

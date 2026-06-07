@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 const Product = () => {
   return (
@@ -10,6 +10,7 @@ const Product = () => {
       <Link to='/product/men'>Men</Link>
       <Link to='/product/women'>Women</Link>
       </div>
+      <Outlet/>
     </div>
   )
 }
