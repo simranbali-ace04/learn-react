@@ -6,6 +6,7 @@ h1{
     transform: translate(-50%, -50%);
     text-decoration: underline;
     font-weight: 60%;
+    white-space: nowrap;
 }
 
 @import "tailwindcss";
