@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 const CourseDetails = () => {
 
-  const params = useParams ()
+  const params = useParams (); {/* Hook that grabs whatever is currently in the dynamic routing segment and turns it into a JS object */}
   console.log(params);
   
 
